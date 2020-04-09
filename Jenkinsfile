@@ -1,11 +1,14 @@
 pipeline{
   agent any
+  tools {
+        maven 'maven-3.6.3'
+    }
   stages{
    stage("build"){
     steps{
       echo 'building the application...'
-      sh 'mvn -B -DskipTests clean package'
-      echo 'application built'
+      sh 'mvn clean compile package'
+      echo 'application built...'
      }
      
     stage("test"){
